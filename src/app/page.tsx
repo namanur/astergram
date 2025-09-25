@@ -56,33 +56,33 @@ export default function Home() {
       </section>
 
       {/* Markets Section */}
-      <section className="py-20 px-4 bg-muted/30">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Supported Markets</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Trade 1000+ cryptocurrencies and major stocks across multiple exchanges
-            </p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {["BTC", "ETH", "SOL", "BNB", "XRP", "ADA", "DOT", "AVAX", "MATIC", "LINK", "UNI", "AAVE"].map((coin) => (
-              <Card key={coin} className="border-border bg-card hover:bg-card/80 transition-colors">
-                <CardContent className="p-4 text-center">
-                  <div className="font-semibold">{coin}</div>
-                  <div className="text-sm text-muted-foreground">/USDT</div>
-                  <div className="text-xs text-green-400 mt-1">+{Math.floor(Math.random() * 5) + 1}%</div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
-              Browse All Markets
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
-        </div>
-      </section>
+   import MarketsGrid from "@/components/market/MarketsGrid";
+// (put the import near your other imports)
+
+...
+
+{/* Markets Section */}
+<section className="py-20 px-4 bg-muted/30">
+  <div className="container mx-auto max-w-6xl">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold mb-4">Supported Markets</h2>
+      <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        Trade 1000+ cryptocurrencies and major stocks across multiple exchanges
+      </p>
+    </div>
+
+    {/* ✅ LIVE grid */}
+    <MarketsGrid symbols={["BTC","ETH","SOL","BNB","XRP","ADA","DOT","AVAX","MATIC","LINK","UNI","AAVE"]} />
+
+    <div className="text-center mt-8">
+      <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
+        Browse All Markets
+        <ArrowRight className="ml-2 h-4 w-4" />
+      </Button>
+    </div>
+  </div>
+</section>
+
 
       {/* How It Works Section */}
       <section className="py-20 px-4">

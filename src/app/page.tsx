@@ -1,7 +1,11 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Shield, Zap, BarChart3, Smartphone, Lock, TrendingUp, Users } from "lucide-react"
+// src/app/page.tsx
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ArrowRight, Shield, Zap, BarChart3, Smartphone, Lock, TrendingUp, Users } from "lucide-react";
+
+// ✅ LIVE hero slider (BNB/SOL/ETH/BTC)
+import HeroPriceSlider from "@/components/market/HeroPriceSlider";
 
 export default function Home() {
   return (
@@ -10,6 +14,7 @@ export default function Home() {
       <section className="relative overflow-hidden py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left copy */}
             <div className="space-y-8">
               <div className="space-y-4">
                 <Badge variant="secondary" className="w-fit">
@@ -32,34 +37,18 @@ export default function Home() {
                   Try Demo
                 </Button>
               </div>
+
+              {/* tiny helper note for users */}
+              <p className="text-sm text-muted-foreground">
+                Tip: Click the dots or coin buttons on the right to switch instantly. Prices update in real time.
+              </p>
             </div>
+
+            {/* Right: replace static BTC card with LIVE slider */}
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur-3xl"></div>
-              <div className="relative bg-card border border-border rounded-2xl p-8">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">BTC/USDT</span>
-                    <Badge variant="secondary" className="bg-green-500/20 text-green-400">+2.45%</Badge>
-                  </div>
-                  <div className="text-2xl font-bold">$43,521.00</div>
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Buy 0.1 BTC</span>
-                      <span>$4,352.10</span>
-                    </div>
-                    <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-primary to-accent w-3/4"></div>
-                    </div>
-                  </div>
-                  <div className="pt-4 border-t border-border">
-                    <div className="text-sm text-muted-foreground">
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        Live price feed from major exchanges
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 rounded-2xl blur-3xl" />
+              <div className="relative">
+                <HeroPriceSlider />
               </div>
             </div>
           </div>
@@ -76,7 +65,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {['BTC', 'ETH', 'SOL', 'BNB', 'XRP', 'ADA', 'DOT', 'AVAX', 'MATIC', 'LINK', 'UNI', 'AAVE'].map((coin) => (
+            {["BTC", "ETH", "SOL", "BNB", "XRP", "ADA", "DOT", "AVAX", "MATIC", "LINK", "UNI", "AAVE"].map((coin) => (
               <Card key={coin} className="border-border bg-card hover:bg-card/80 transition-colors">
                 <CardContent className="p-4 text-center">
                   <div className="font-semibold">{coin}</div>
@@ -156,54 +145,42 @@ export default function Home() {
               <CardHeader>
                 <Zap className="h-8 w-8 text-primary mb-2" />
                 <CardTitle className="text-lg">Lightning Fast</CardTitle>
-                <CardDescription>
-                  Execute trades in milliseconds with optimized order routing
-                </CardDescription>
+                <CardDescription>Execute trades in milliseconds with optimized order routing</CardDescription>
               </CardHeader>
             </Card>
             <Card className="border-border bg-card">
               <CardHeader>
                 <Shield className="h-8 w-8 text-accent mb-2" />
                 <CardTitle className="text-lg">Non-Custodial</CardTitle>
-                <CardDescription>
-                  Your funds stay in your exchange account at all times
-                </CardDescription>
+                <CardDescription>Your funds stay in your exchange account at all times</CardDescription>
               </CardHeader>
             </Card>
             <Card className="border-border bg-card">
               <CardHeader>
                 <TrendingUp className="h-8 w-8 text-[#F3C07B] mb-2" />
                 <CardTitle className="text-lg">Real-time Data</CardTitle>
-                <CardDescription>
-                  Live price feeds and market data from major exchanges
-                </CardDescription>
+                <CardDescription>Live price feeds and market data from major exchanges</CardDescription>
               </CardHeader>
             </Card>
             <Card className="border-border bg-card">
               <CardHeader>
                 <Lock className="h-8 w-8 text-primary mb-2" />
                 <CardTitle className="text-lg">Risk Management</CardTitle>
-                <CardDescription>
-                  Advanced stop-loss, take-profit, and position sizing controls
-                </CardDescription>
+                <CardDescription>Advanced stop-loss, take-profit, and position sizing controls</CardDescription>
               </CardHeader>
             </Card>
             <Card className="border-border bg-card">
               <CardHeader>
                 <BarChart3 className="h-8 w-8 text-accent mb-2" />
                 <CardTitle className="text-lg">Portfolio Tracking</CardTitle>
-                <CardDescription>
-                  Monitor your positions and performance in real-time
-                </CardDescription>
+                <CardDescription>Monitor your positions and performance in real-time</CardDescription>
               </CardHeader>
             </Card>
             <Card className="border-border bg-card">
               <CardHeader>
                 <Users className="h-8 w-8 text-[#F3C07B] mb-2" />
                 <CardTitle className="text-lg">Multi-Exchange</CardTitle>
-                <CardDescription>
-                  Connect and trade across multiple exchanges simultaneously
-                </CardDescription>
+                <CardDescription>Connect and trade across multiple exchanges simultaneously</CardDescription>
               </CardHeader>
             </Card>
           </div>
@@ -336,10 +313,10 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-border pt-8 text-center text-muted-foreground">
-            <p>&copy; 2024 Astergram. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Astergram. All rights reserved.</p>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }

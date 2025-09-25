@@ -1,0 +1,152 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  /* Astergram Color Palette */
+  --background: #0B0F1A;
+  --foreground: #E6E6E6;
+  --card: #151923;
+  --card-foreground: #E6E6E6;
+  --popover: #151923;
+  --popover-foreground: #E6E6E6;
+  --primary: #FF7A00;
+  --primary-foreground: #FFFFFF;
+  --secondary: #1A1F2E;
+  --secondary-foreground: #E6E6E6;
+  --muted: #1A1F2E;
+  --muted-foreground: #A3A3A3;
+  --accent: #FFA94D;
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626;
+  --border: #2A3042;
+  --input: #2A3042;
+  --ring: #0088CC;
+  --chart-1: #0088CC;
+  --chart-2: #7B61FF;
+  --chart-3: #F3C07B;
+  --chart-4: #DC2626;
+  --chart-5: #10B981;
+  --sidebar: #151923;
+  --sidebar-foreground: #E6E6E6;
+  --sidebar-primary: #0088CC;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1A1F2E;
+  --sidebar-accent-foreground: #E6E6E6;
+  --sidebar-border: #2A3042;
+  --sidebar-ring: #0088CC;
+  
+  /* Gradients */
+  --gradient-telegram-aster: linear-gradient(135deg, #0088CC, #7B61FF, #F3C07B);
+  --gradient-orbit-dark: radial-gradient(circle at center, #0B0F1A 0%, #070A12 100%);
+  --gradient-action: linear-gradient(135deg, #0088CC, #7B61FF);
+}
+
+.dark {
+  /* Dark mode uses the same color palette as light mode since we're dark-first */
+  --background: #0B0F1A;
+  --foreground: #E6E6E6;
+  --card: #0A0E17;
+  --card-foreground: #E6E6E6;
+  --popover: #0A0E17;
+  --popover-foreground: #E6E6E6;
+  --primary: #0099E6;
+  --primary-foreground: #FFFFFF;
+  --secondary: #0F1420;
+  --secondary-foreground: #E6E6E6;
+  --muted: #0F1420;
+  --muted-foreground: #A3A3A3;
+  --accent: #8B71FF;
+  --accent-foreground: #FFFFFF;
+  --destructive: #E53935;
+  --border: #1E2436;
+  --input: #1E2436;
+  --ring: #0099E6;
+  --chart-1: #0099E6;
+  --chart-2: #8B71FF;
+  --chart-3: #F5D08B;
+  --chart-4: #E53935;
+  --chart-5: #26C682;
+  --sidebar: #0A0E17;
+  --sidebar-foreground: #E6E6E6;
+  --sidebar-primary: #0099E6;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #0F1420;
+  --sidebar-accent-foreground: #E6E6E6;
+  --sidebar-border: #1E2436;
+  --sidebar-ring: #FF9A3D;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+
+/* --- Micro-interactions: bounce + hover lift --- */
+@keyframes bounce-soft {
+  0%, 100% { transform: translateY(0); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+  50% { transform: translateY(-4px); animation-timing-function: cubic-bezier(0,0,0.2,1); }
+}
+@keyframes pulse-border {
+  0% { box-shadow: 0 0 0 0 rgba(255,122,0,0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(255,122,0,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,122,0,0); }
+}
+/* apply to common interactive elements */
+:where(button,[role="button"],.btn,.card,.panel,.tile,.market-card,.shadcn-button) {
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease;
+}
+:where(button,[role="button"],.btn,.card,.panel,.tile,.market-card,.shadcn-button):hover {
+  transform: translateY(-3px);
+}
+:where(button,[role="button"],.btn).bounce, :where(.card,.panel,.tile,.market-card).bounce {
+  animation: bounce-soft 1.2s ease-in-out;
+}
+:where(button.primary,[role="button"].primary,.btn-primary) { animation: pulse-border 2.2s infinite; }
